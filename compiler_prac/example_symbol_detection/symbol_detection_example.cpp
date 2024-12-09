@@ -1,4 +1,5 @@
-//this is a simple symbol detection program
+//this is a simple symbol detection program detecting 
+//header names, comments, braces, line counts
 
 #include<iostream>
 #include<stdio.h>
