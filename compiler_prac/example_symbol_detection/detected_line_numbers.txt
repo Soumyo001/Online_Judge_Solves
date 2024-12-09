@@ -96,113 +96,121 @@
 96:	    int accountNumber;
 97:	    double amount;
 98:	
-99:	    cout << "\nEnter Account Number: ";
-100:	    cin >> accountNumber;
-101:	
-102:	    for (auto& account : accounts) {
-103:	        if (account.accountNumber == accountNumber) {
-104:	            cout << "Enter Amount to Withdraw: ";
-105:	            cin >> amount;
-106:	            if (amount > account.balance || amount <= 0) {
-107:	                cout << "\nInvalid amount. Withdrawal failed.\n";
-108:	                return;
-109:	            }
-110:	            account.balance -= amount;
-111:	            cout << "\nWithdrawal successful! New Balance: " << account.balance << '\n';
-112:	            return;
-113:	        }
-114:	    }
-115:	
-116:	    cout << "\nAccount not found.\n";
-117:	}
-118:	
-119:	// Function to check account balance
-120:	void checkBalance(const vector<Account>& accounts) {
-121:	    int accountNumber;
-122:	    cout << "\nEnter Account Number: ";
-123:	    cin >> accountNumber;
-124:	
-125:	    for (const auto& account : accounts) {
-126:	        if (account.accountNumber == accountNumber) {
-127:	            cout << "\nAccount Holder: " << account.holderName
-128:	                 << "\nBalance: " << account.balance << '\n';
-129:	            return;
-130:	        }
-131:	    }
+99:	    /*  this is a multiline comment.
+100:	        this is a multiline comment.
+101:	        this is a multiline comment.
+102:	        this is a multiline comment.
+103:	        this is a multiline comment.
+104:	        this is a multiline comment.
+105:	    */  
+106:	
+107:	    cout << "\nEnter Account Number: ";
+108:	    cin >> accountNumber;
+109:	
+110:	    for (auto& account : accounts) {
+111:	        if (account.accountNumber == accountNumber) {
+112:	            cout << "Enter Amount to Withdraw: ";
+113:	            cin >> amount;
+114:	            if (amount > account.balance || amount <= 0) {
+115:	                cout << "\nInvalid amount. Withdrawal failed.\n";
+116:	                return;
+117:	            }
+118:	            account.balance -= amount;
+119:	            cout << "\nWithdrawal successful! New Balance: " << account.balance << '\n';
+120:	            return;
+121:	        }
+122:	    }
+123:	
+124:	    cout << "\nAccount not found.\n";
+125:	}
+126:	
+127:	// Function to check account balance
+128:	void checkBalance(const vector<Account>& accounts) {
+129:	    int accountNumber;
+130:	    cout << "\nEnter Account Number: ";
+131:	    cin >> accountNumber;
 132:	
-133:	    cout << "\nAccount not found.\n";
-134:	}
-135:	
-136:	// Function to delete an account
-137:	void deleteAccount(vector<Account>& accounts) {
-138:	    int accountNumber;
-139:	    cout << "\nEnter Account Number to Delete: ";
-140:	    cin >> accountNumber;
-141:	
-142:	    for (auto it = accounts.begin(); it != accounts.end(); ++it) {
-143:	        if (it->accountNumber == accountNumber) {
-144:	            accounts.erase(it);
-145:	            cout << "\nAccount deleted successfully!\n";
-146:	            return;
-147:	        }
-148:	    }
+133:	    for (const auto& account : accounts) {
+134:	        if (account.accountNumber == accountNumber) {
+135:	            cout << "\nAccount Holder: " << account.holderName
+136:	                 << "\nBalance: " << account.balance << '\n';
+137:	            return;
+138:	        }
+139:	    }
+140:	
+141:	    cout << "\nAccount not found.\n";
+142:	}
+143:	
+144:	// Function to delete an account
+145:	void deleteAccount(vector<Account>& accounts) {
+146:	    int accountNumber;
+147:	    cout << "\nEnter Account Number to Delete: ";
+148:	    cin >> accountNumber;
 149:	
-150:	    cout << "\nAccount not found.\n";
-151:	}
-152:	
-153:	// Function to display all accounts
-154:	void displayAllAccounts(const vector<Account>& accounts) {
-155:	    if (accounts.empty()) {
-156:	        cout << "\nNo accounts found.\n";
-157:	        return;
-158:	    }
-159:	
-160:	    cout << "\n=== List of All Accounts ===\n";
-161:	    cout << left << setw(15) << "Account No." << setw(20) << "Holder Name" << setw(10) << "Balance\n";
-162:	    cout << "------------------------------------------\n";
-163:	
-164:	    for (const auto& account : accounts) {
-165:	        cout << left << setw(15) << account.accountNumber
-166:	             << setw(20) << account.holderName
-167:	             << setw(10) << account.balance << '\n';
-168:	    }
-169:	}
-170:	
-171:	// Main program
-172:	int main() {
-173:	    vector<Account> accounts;
-174:	    int choice;
-175:	
-176:	    while (true) {
-177:	        displayMenu();
-178:	        cin >> choice;
-179:	
-180:	        switch (choice) {
-181:	        case 1:
-182:	            createAccount(accounts);
-183:	            break;
-184:	        case 2:
-185:	            deposit(accounts);
-186:	            break;
-187:	        case 3:
-188:	            withdraw(accounts);
-189:	            break;
-190:	        case 4:
-191:	            checkBalance(accounts);
-192:	            break;
-193:	        case 5:
-194:	            deleteAccount(accounts);
-195:	            break;
-196:	        case 6:
-197:	            displayAllAccounts(accounts);
-198:	            break;
-199:	        case 7:
-200:	            cout << "\nThank you for using the Bank Management System. Goodbye!\n";
-201:	            return 0;
-202:	        default:
-203:	            cout << "\nInvalid choice. Please try again.\n";
-204:	        }
-205:	    }
-206:	
-207:	    return 0;
-208:	}
+150:	    for (auto it = accounts.begin(); it != accounts.end(); ++it) {
+151:	        if (it->accountNumber == accountNumber) {
+152:	            accounts.erase(it);
+153:	            cout << "\nAccount deleted successfully!\n";
+154:	            return;
+155:	        }
+156:	    }
+157:	
+158:	    cout << "\nAccount not found.\n";
+159:	}
+160:	
+161:	// Function to display all accounts
+162:	void displayAllAccounts(const vector<Account>& accounts) {
+163:	    if (accounts.empty()) {
+164:	        cout << "\nNo accounts found.\n";
+165:	        return;
+166:	    }
+167:	
+168:	    cout << "\n=== List of All Accounts ===\n";
+169:	    cout << left << setw(15) << "Account No." << setw(20) << "Holder Name" << setw(10) << "Balance\n";
+170:	    cout << "------------------------------------------\n";
+171:	
+172:	    for (const auto& account : accounts) {
+173:	        cout << left << setw(15) << account.accountNumber
+174:	             << setw(20) << account.holderName
+175:	             << setw(10) << account.balance << '\n';
+176:	    }
+177:	}
+178:	
+179:	// Main program
+180:	int main() {
+181:	    vector<Account> accounts;
+182:	    int choice;
+183:	
+184:	    while (true) {
+185:	        displayMenu();
+186:	        cin >> choice;
+187:	
+188:	        switch (choice) {
+189:	        case 1:
+190:	            createAccount(accounts);
+191:	            break;
+192:	        case 2:
+193:	            deposit(accounts);
+194:	            break;
+195:	        case 3:
+196:	            withdraw(accounts);
+197:	            break;
+198:	        case 4:
+199:	            checkBalance(accounts);
+200:	            break;
+201:	        case 5:
+202:	            deleteAccount(accounts);
+203:	            break;
+204:	        case 6:
+205:	            displayAllAccounts(accounts);
+206:	            break;
+207:	        case 7:
+208:	            cout << "\nThank you for using the Bank Management System. Goodbye!\n";
+209:	            return 0;
+210:	        default:
+211:	            cout << "\nInvalid choice. Please try again.\n";
+212:	        }
+213:	    }
+214:	
+215:	    return 0;
+216:	}

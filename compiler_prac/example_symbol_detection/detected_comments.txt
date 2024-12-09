@@ -1,0 +1,18 @@
+// Function prototypes
+// Function to display the menu
+// Function to create a new account
+// Check for duplicate account number
+// To clear newline from buffer
+// Function to deposit money
+// Function to withdraw money
+/*  this is a multiline comment.
+        this is a multiline comment.
+        this is a multiline comment.
+        this is a multiline comment.
+        this is a multiline comment.
+        this is a multiline comment.
+    */
+// Function to check account balance
+// Function to delete an account
+// Function to display all accounts
+// Main program
