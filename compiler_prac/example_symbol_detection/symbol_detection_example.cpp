@@ -26,7 +26,7 @@ int main(void){
         }else if(c == '#'){
             long pos = ftell(f1);
             FILE* temp = f1;
-            while((c=fgetc(temp)) != '<') ;
+            while((c=fgetc(temp)) != '<');
             while ((c=fgetc(temp))!='>') fputc(c, f3);
             fputc('\n',f3);
             fseek(f1, pos, SEEK_SET);
