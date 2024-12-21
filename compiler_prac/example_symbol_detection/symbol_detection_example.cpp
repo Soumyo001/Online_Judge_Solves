@@ -29,6 +29,7 @@ int main(void){
             while((c=fgetc(temp)) != '<');
             while ((c=fgetc(temp))!='>') fputc(c, f3);
             fputc('\n',f3);
+            fclose(temp);
             fseek(f1, pos, SEEK_SET);
         }else if(c == '\n'){
             ++line_count;
@@ -52,6 +53,7 @@ int main(void){
                 }
                 fputc('\n', f5);
             }
+            fclose(temp);
             fseek(f1, pos, SEEK_SET);
         }
     }
