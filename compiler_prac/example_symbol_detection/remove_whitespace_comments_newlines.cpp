@@ -54,8 +54,10 @@ int main(void){
                 fputc(' ', f2);
                 continue;
             }else if(c == ' '){
+                long pos = ftell(f1);
                 c = fgetc(f1);
-                if(c == ' ') continue;
+                if(c == ' ' || c == '\n') continue;
+                else if(c == '/') fseek(f1, pos, SEEK_SET);
                 else {
                     fputc(' ', f2);
                     fputc(c, f2);
@@ -67,8 +69,8 @@ int main(void){
     std::cout<<"\n\nModified File : \n";
     std::cout<<"==================================\n";
     fclose(f1);
-    fclose(f3);
     fclose(f2);
+    fclose(f3);
     readFile("removed_newlines_spaces.txt");
     // std::ifstream input("program.cpp");
     // std::ofstream output("removed_newlines_spaces.txt");

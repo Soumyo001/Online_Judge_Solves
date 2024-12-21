@@ -1,7 +1,107 @@
-// Single Line Comment
-/* Multi
-Line
+/*
+==========================================================
+                    Bank Management System
+==========================================================
 
-Comment
-
+This program is a simple implementation of a bank account
+management system. It allows users to:
+- Create new accounts
+- Deposit and withdraw funds
+- Display account details
+- List all accounts
+==========================================================
 */
+/*
+==========================================================
+                    INCLUDES AND UTILITIES
+==========================================================
+The following utility functions are defined:
+- clearConsole() to clear the console based on OS
+- displayMenu() for user interaction
+==========================================================
+*/
+// Utility function to clear the console
+/* 
+Class Declaration for Bank Account
+----------------------------------
+Contains:
+- Data Members: Account number, holder's name, balance
+- Member Functions:
+    - deposit(double)
+    - withdraw(double)
+    - displayAccountDetails()
+*/
+// Unique account number
+// Account holder's name
+// Current balance in the account
+// Account type (e.g., Savings, Checking)
+// Constructor
+/*
+    =============================
+    Deposit Function
+    =============================
+    - Adds a specified amount to the account balance
+    - Checks for invalid deposits (<= 0)
+    */
+/*
+    =============================
+    Withdraw Function
+    =============================
+    - Deducts a specified amount from the account balance
+    - Validates sufficient balance before processing withdrawal
+    */
+// Displays account details
+// Display the main menu
+/*
+    ========================================
+    Interactive Menu for User Choices
+    ========================================
+    Options include:
+    1. Create Account
+    2. Deposit Money
+    3. Withdraw Money
+    4. Display Account Details
+    5. List All Accounts
+    6. Exit
+    */
+/*
+    =========================================
+    Search Account Function
+    =========================================
+    Looks through a vector of BankAccount objects
+    to find an account with the given account number.
+    =========================================
+    */
+// Function to list all accounts
+/*
+    ====================================================
+    Display List of All Accounts
+    ====================================================
+    Loops through each BankAccount object in the vector
+    and prints out its number and holder's name
+    ====================================================
+    */
+/*
+    =============================
+    Main Function Workflow
+    =============================
+    - Manages user interactions
+    - Loops until user decides to exit
+    =============================
+    */
+// Create a new account
+/*
+            ------------------------------------
+            Prompt user for new account details:
+            - Account Number
+            - Holder's Name
+            - Initial Balance
+            - Account Type
+            ------------------------------------
+            */
+// Add new account to the list
+// Deposit money
+// Withdraw money
+// Display account details
+// List all accounts
+// Exit the program

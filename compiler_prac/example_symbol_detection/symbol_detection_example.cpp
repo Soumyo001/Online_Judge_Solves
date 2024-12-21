@@ -22,38 +22,54 @@ int main(void){
     while((c = fgetc(f1))!=EOF){
         fputc(c, f4);
         if(c == '{' || c == '}' ||  c == '(' || c == ')'){
+
             fputc(c, f2);
+
         }else if(c == '#'){
+
             long pos = ftell(f1);
             FILE* temp = f1;
-            while((c=fgetc(temp)) != '<');
-            while ((c=fgetc(temp))!='>') fputc(c, f3);
-            fputc('\n',f3);
-            fclose(temp);
+            std::string s;
+            while((c=fgetc(temp)) != '<') s+=std::string(1, c);
+            if(s.find("include")!=std::string::npos){
+                while ((c=fgetc(temp))!='>') fputc(c, f3);
+                fputc('\n',f3);
+            }
             fseek(f1, pos, SEEK_SET);
+
         }else if(c == '\n'){
-            ++line_count;
-            fprintf(f4, "%d:\t", line_count);
+
+            fprintf(f4, "%d:\t", ++line_count);
+
         }else if(c == '/'){
+
             long pos = ftell(f1);
             FILE* temp = f1;
             c = fgetc(temp);
             if(c == '/'){
+
                 fputs("//", f5);
                 while ((c=fgetc(temp))!= '\n') fputc(c, f5);
                 fputc(c, f5);
+
             }else if (c == '*'){
+
                 fputs("/*", f5);
-                while ((c=fgetc(temp))!=EOF) {
-                    fputc(c, f5);
-                    if(c=='*' && (c=fgetc(temp))=='/'){ 
+                while ((c=fgetc(temp))!=EOF)
+                {
+                    if(c == '*'){
                         fputc(c, f5);
-                        break;
+                        c = fgetc(temp);
+                        if(c == '/'){
+                            fputc(c, f5);
+                            break;
+                        }
                     }
+                    fputc(c, f5);
                 }
                 fputc('\n', f5);
+                
             }
-            fclose(temp);
             fseek(f1, pos, SEEK_SET);
         }
     }

@@ -1,11 +1,7 @@
-iostream 8
-vector 412
-string 134 34
-iomanip 312
-algorithm 134
-ctime 413
-map 134
-vector 134
-set 423
+iostream
+vector
+string
+iomanip
+cstdlib
 ext/pb_ds/assoc_container.hpp
 ext/pb_ds/tree_policy.hpp
