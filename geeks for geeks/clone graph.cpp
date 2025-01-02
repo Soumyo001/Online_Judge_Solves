@@ -85,24 +85,25 @@ bool compare(Node* prev, Node* new_node, unordered_set<Node*>& prev_vis, unorder
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
-        queue<Node*> q;
-        q.push(node);
-        Node* src = new Node();
-        src->val = node->val;
         map<Node*, Node*> m;
-        m[node] = src;
+        m[node] = new Node();
+        m[node]->val = node->val;
+        queue<Node*> q;
+        map<Node*, bool> vis;
+        q.push(node);
+        vis[node] = true;
         while(!q.empty()){
-            Node* n = q.front();q.pop();
-            vector<Node*> v = n->neighbors;
-            int s = v.size();
-            for(int i=0;i<s;++i){
-                if(m[v[i]]==NULL){
-                    Node* no = new Node();
-                    no->val =v[i]->val;
-                    m[v[i]]=no;
-                    q.push(v[i]);
+            Node* n = q.front();
+            q.pop();
+            for(Node* i : n->neighbors){
+                if(!vis[i]){
+                    // Node* ne = new Node();
+                    // ne->val = i->val;
+                    q.push(i);
+                    m[i] = new Node(i->val);
+                    vis[i] = true;
                 }
-                m[n]->neighbors.push_back(m[v[i]]);
+                m[n]->neighbors.push_back(m[i]);
             }
         }
         return m[node];
