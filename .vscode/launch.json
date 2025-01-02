@@ -75,7 +75,7 @@
                 }
             ],
             "preLaunchTask": "C/C++: gcc build active file"
-        }
+        },
     ],
     "version": "2.0.0"
 }
