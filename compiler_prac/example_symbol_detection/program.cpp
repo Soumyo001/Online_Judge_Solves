@@ -107,6 +107,7 @@ public:
     }
 
     int getAccountNumber() const { return accountNumber; }
+    std::string getAccountHolderName() const { return accountHolderName; }
 };
 
 // Display the main menu
@@ -171,7 +172,7 @@ void listAllAccounts(const std::vector<BankAccount>& accounts) {
     std::cout << "========================================\n";
     for (const auto& account : accounts) {
         std::cout << "Account Number: " << account.getAccountNumber() << "\n";
-        std::cout << "Account Holder: " << account.accountHolderName << "\n";
+        std::cout << "Account Holder: " << account.getAccountHolderName() << "\n";
         std::cout << "----------------------------------------\n";
     }
 }

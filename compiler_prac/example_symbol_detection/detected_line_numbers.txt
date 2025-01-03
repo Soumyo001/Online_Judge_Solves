@@ -107,179 +107,180 @@
 107:	    }
 108:	
 109:	    int getAccountNumber() const { return accountNumber; }
-110:	};
-111:	
-112:	// Display the main menu
-113:	void displayMenu() {
-114:	    /*
-115:	    ========================================
-116:	    Interactive Menu for User Choices
-117:	    ========================================
-118:	    Options include:
-119:	    1. Create Account
-120:	    2. Deposit Money
-121:	    3. Withdraw Money
-122:	    4. Display Account Details
-123:	    5. List All Accounts
-124:	    6. Exit
-125:	    */
-126:	    std::cout << "\n=======================================\n";
-127:	    std::cout << "        Bank Management System         \n";
-128:	    std::cout << "=======================================\n";
-129:	    std::cout << "1. Create New Account\n";
-130:	    std::cout << "2. Deposit Money\n";
-131:	    std::cout << "3. Withdraw Money\n";
-132:	    std::cout << "4. Display Account Details\n";
-133:	    std::cout << "5. List All Accounts\n";
-134:	    std::cout << "6. Exit\n";
-135:	    std::cout << "=======================================\n";
-136:	    std::cout << "Enter your choice: ";
-137:	}
-138:	
-139:	BankAccount* findAccount(std::vector<BankAccount>& accounts, int accountNumber) {
-140:	    /*
-141:	    =========================================
-142:	    Search Account Function
-143:	    =========================================
-144:	    Looks through a vector of BankAccount objects
-145:	    to find an account with the given account number.
-146:	    =========================================
-147:	    */
-148:	    for (auto& account : accounts) {
-149:	        if (account.getAccountNumber() == accountNumber) {
-150:	            return &account;
-151:	        }
-152:	    }
-153:	    return nullptr;
-154:	}
-155:	
-156:	// Function to list all accounts
-157:	void listAllAccounts(const std::vector<BankAccount>& accounts) {
-158:	    /*
-159:	    ====================================================
-160:	    Display List of All Accounts
-161:	    ====================================================
-162:	    Loops through each BankAccount object in the vector
-163:	    and prints out its number and holder's name
-164:	    ====================================================
-165:	    */
-166:	    if (accounts.empty()) {
-167:	        std::cout << "No accounts available.\n";
-168:	        return;
-169:	    }
-170:	    std::cout << "\nAll Bank Accounts:\n";
-171:	    std::cout << "========================================\n";
-172:	    for (const auto& account : accounts) {
-173:	        std::cout << "Account Number: " << account.getAccountNumber() << "\n";
-174:	        std::cout << "Account Holder: " << account.accountHolderName << "\n";
-175:	        std::cout << "----------------------------------------\n";
-176:	    }
-177:	}
-178:	
-179:	int main() {
-180:	    /*
-181:	    =============================
-182:	    Main Function Workflow
-183:	    =============================
-184:	    - Manages user interactions
-185:	    - Loops until user decides to exit
-186:	    =============================
-187:	    */
-188:	    std::vector<BankAccount> accounts;
-189:	    int choice, accountNumber;
-190:	    double amount;
-191:	    std::string name, type;
-192:	
-193:	    do {
-194:	        clearConsole();
-195:	        displayMenu();
-196:	        std::cin >> choice;
-197:	        std::cin.ignore(); 
-198:	
-199:	        switch (choice) {
-200:	        case 1: // Create a new account
-201:	            /*
-202:	            ------------------------------------
-203:	            Prompt user for new account details:
-204:	            - Account Number
-205:	            - Holder's Name
-206:	            - Initial Balance
-207:	            - Account Type
-208:	            ------------------------------------
-209:	            */
-210:	            std::cout << "Enter Account Number: ";
-211:	            std::cin >> accountNumber;
-212:	            std::cin.ignore();
-213:	            std::cout << "Enter Account Holder's Name: ";
-214:	            std::getline(std::cin, name);
-215:	            std::cout << "Enter Account Type (Savings/Checking): ";
-216:	            std::getline(std::cin, type);
-217:	            std::cout << "Enter Initial Balance: ";
-218:	            std::cin >> amount;
-219:	
-220:	            // Add new account to the list
-221:	            accounts.emplace_back(accountNumber, name, amount, type);
-222:	            std::cout << "Account created successfully!\n";
-223:	            break;
-224:	
-225:	        case 2: // Deposit money
-226:	            std::cout << "Enter Account Number: ";
-227:	            std::cin >> accountNumber;
-228:	            {
-229:	                BankAccount* account = findAccount(accounts, accountNumber);
-230:	                if (account) {
-231:	                    std::cout << "Enter Amount to Deposit: ";
-232:	                    std::cin >> amount;
-233:	                    account->deposit(amount);
-234:	                } else {
-235:	                    std::cerr << "Error: Account not found.\n";
-236:	                }
-237:	            }
-238:	            break;
-239:	
-240:	        case 3: // Withdraw money
-241:	            std::cout << "Enter Account Number: ";
-242:	            std::cin >> accountNumber;
-243:	            {
-244:	                BankAccount* account = findAccount(accounts, accountNumber);
-245:	                if (account) {
-246:	                    std::cout << "Enter Amount to Withdraw: ";
-247:	                    std::cin >> amount;
-248:	                    account->withdraw(amount);
-249:	                } else {
-250:	                    std::cerr << "Error: Account not found.\n";
-251:	                }
-252:	            }
-253:	            break;
-254:	
-255:	        case 4: // Display account details
-256:	            std::cout << "Enter Account Number: ";
-257:	            std::cin >> accountNumber;
-258:	            {
-259:	                BankAccount* account = findAccount(accounts, accountNumber);
-260:	                if (account) {
-261:	                    account->displayAccountDetails();
-262:	                } else {
-263:	                    std::cerr << "Error: Account not found.\n";
-264:	                }
-265:	            }
-266:	            break;
-267:	
-268:	        case 5: // List all accounts
-269:	            listAllAccounts(accounts);
-270:	            break;
-271:	
-272:	        case 6: // Exit the program
-273:	            std::cout << "Goodbye!\n";
-274:	            break;
-275:	
-276:	        default:
-277:	            std::cerr << "Invalid option. Try again.\n";
-278:	        }
-279:	        std::cout << "\nPress Enter to continue...";
-280:	        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-281:	    } while (choice != 6);
-282:	
-283:	    return 0;
-284:	}
-285:	
+110:	    std::string getAccountHolderName() const { return accountHolderName; }
+111:	};
+112:	
+113:	// Display the main menu
+114:	void displayMenu() {
+115:	    /*
+116:	    ========================================
+117:	    Interactive Menu for User Choices
+118:	    ========================================
+119:	    Options include:
+120:	    1. Create Account
+121:	    2. Deposit Money
+122:	    3. Withdraw Money
+123:	    4. Display Account Details
+124:	    5. List All Accounts
+125:	    6. Exit
+126:	    */
+127:	    std::cout << "\n=======================================\n";
+128:	    std::cout << "        Bank Management System         \n";
+129:	    std::cout << "=======================================\n";
+130:	    std::cout << "1. Create New Account\n";
+131:	    std::cout << "2. Deposit Money\n";
+132:	    std::cout << "3. Withdraw Money\n";
+133:	    std::cout << "4. Display Account Details\n";
+134:	    std::cout << "5. List All Accounts\n";
+135:	    std::cout << "6. Exit\n";
+136:	    std::cout << "=======================================\n";
+137:	    std::cout << "Enter your choice: ";
+138:	}
+139:	
+140:	BankAccount* findAccount(std::vector<BankAccount>& accounts, int accountNumber) {
+141:	    /*
+142:	    =========================================
+143:	    Search Account Function
+144:	    =========================================
+145:	    Looks through a vector of BankAccount objects
+146:	    to find an account with the given account number.
+147:	    =========================================
+148:	    */
+149:	    for (auto& account : accounts) {
+150:	        if (account.getAccountNumber() == accountNumber) {
+151:	            return &account;
+152:	        }
+153:	    }
+154:	    return nullptr;
+155:	}
+156:	
+157:	// Function to list all accounts
+158:	void listAllAccounts(const std::vector<BankAccount>& accounts) {
+159:	    /*
+160:	    ====================================================
+161:	    Display List of All Accounts
+162:	    ====================================================
+163:	    Loops through each BankAccount object in the vector
+164:	    and prints out its number and holder's name
+165:	    ====================================================
+166:	    */
+167:	    if (accounts.empty()) {
+168:	        std::cout << "No accounts available.\n";
+169:	        return;
+170:	    }
+171:	    std::cout << "\nAll Bank Accounts:\n";
+172:	    std::cout << "========================================\n";
+173:	    for (const auto& account : accounts) {
+174:	        std::cout << "Account Number: " << account.getAccountNumber() << "\n";
+175:	        std::cout << "Account Holder: " << account.getAccountHolderName() << "\n";
+176:	        std::cout << "----------------------------------------\n";
+177:	    }
+178:	}
+179:	
+180:	int main() {
+181:	    /*
+182:	    =============================
+183:	    Main Function Workflow
+184:	    =============================
+185:	    - Manages user interactions
+186:	    - Loops until user decides to exit
+187:	    =============================
+188:	    */
+189:	    std::vector<BankAccount> accounts;
+190:	    int choice, accountNumber;
+191:	    double amount;
+192:	    std::string name, type;
+193:	
+194:	    do {
+195:	        clearConsole();
+196:	        displayMenu();
+197:	        std::cin >> choice;
+198:	        std::cin.ignore(); 
+199:	
+200:	        switch (choice) {
+201:	        case 1: // Create a new account
+202:	            /*
+203:	            ------------------------------------
+204:	            Prompt user for new account details:
+205:	            - Account Number
+206:	            - Holder's Name
+207:	            - Initial Balance
+208:	            - Account Type
+209:	            ------------------------------------
+210:	            */
+211:	            std::cout << "Enter Account Number: ";
+212:	            std::cin >> accountNumber;
+213:	            std::cin.ignore();
+214:	            std::cout << "Enter Account Holder's Name: ";
+215:	            std::getline(std::cin, name);
+216:	            std::cout << "Enter Account Type (Savings/Checking): ";
+217:	            std::getline(std::cin, type);
+218:	            std::cout << "Enter Initial Balance: ";
+219:	            std::cin >> amount;
+220:	
+221:	            // Add new account to the list
+222:	            accounts.emplace_back(accountNumber, name, amount, type);
+223:	            std::cout << "Account created successfully!\n";
+224:	            break;
+225:	
+226:	        case 2: // Deposit money
+227:	            std::cout << "Enter Account Number: ";
+228:	            std::cin >> accountNumber;
+229:	            {
+230:	                BankAccount* account = findAccount(accounts, accountNumber);
+231:	                if (account) {
+232:	                    std::cout << "Enter Amount to Deposit: ";
+233:	                    std::cin >> amount;
+234:	                    account->deposit(amount);
+235:	                } else {
+236:	                    std::cerr << "Error: Account not found.\n";
+237:	                }
+238:	            }
+239:	            break;
+240:	
+241:	        case 3: // Withdraw money
+242:	            std::cout << "Enter Account Number: ";
+243:	            std::cin >> accountNumber;
+244:	            {
+245:	                BankAccount* account = findAccount(accounts, accountNumber);
+246:	                if (account) {
+247:	                    std::cout << "Enter Amount to Withdraw: ";
+248:	                    std::cin >> amount;
+249:	                    account->withdraw(amount);
+250:	                } else {
+251:	                    std::cerr << "Error: Account not found.\n";
+252:	                }
+253:	            }
+254:	            break;
+255:	
+256:	        case 4: // Display account details
+257:	            std::cout << "Enter Account Number: ";
+258:	            std::cin >> accountNumber;
+259:	            {
+260:	                BankAccount* account = findAccount(accounts, accountNumber);
+261:	                if (account) {
+262:	                    account->displayAccountDetails();
+263:	                } else {
+264:	                    std::cerr << "Error: Account not found.\n";
+265:	                }
+266:	            }
+267:	            break;
+268:	
+269:	        case 5: // List all accounts
+270:	            listAllAccounts(accounts);
+271:	            break;
+272:	
+273:	        case 6: // Exit the program
+274:	            std::cout << "Goodbye!\n";
+275:	            break;
+276:	
+277:	        default:
+278:	            std::cerr << "Invalid option. Try again.\n";
+279:	        }
+280:	        std::cout << "\nPress Enter to continue...";
+281:	        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+282:	    } while (choice != 6);
+283:	
+284:	    return 0;
+285:	}
+286:	

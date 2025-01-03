@@ -52,12 +52,13 @@ int main(void){
         }else{
             if(c == '\n'){
                 fputc(' ', f2);
-                continue;
             }else if(c == ' '){
                 long pos = ftell(f1);
                 c = fgetc(f1);
                 if(c == ' ' || c == '\n') continue;
-                else if(c == '/') fseek(f1, pos, SEEK_SET);
+                else if(c == '/'){
+                     fseek(f1, pos, SEEK_SET);
+                }
                 else {
                     fputc(' ', f2);
                     fputc(c, f2);
@@ -87,25 +88,3 @@ int main(void){
     // std::cout<<code;
     // input.close();
 }
-
-
-
-
-// Function prototypes
-// Function to display the menu
-// Function to create a new account
-// Check for duplicate account number
-// To clear newline from buffer
-// Function to deposit money
-// Function to withdraw money
-/*  this is a multiline comment.
-        this is a multiline comment.
-        this is a multiline comment.
-        this is a multiline comment.
-        this is a multiline comment.
-        this is a multiline comment.
-    */
-// Function to check account balance
-// Function to delete an account
-// Function to display all accounts
-// Main program

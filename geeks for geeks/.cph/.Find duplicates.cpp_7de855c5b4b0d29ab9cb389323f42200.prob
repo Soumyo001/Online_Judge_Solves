@@ -1,1 +1,0 @@
-{"name":"Local: Find duplicates","url":"e:\\Code Practise\\geeks for geeks\\Find duplicates.cpp","tests":[{"id":1735151770909,"input":"7\n1 2 3 6 3 6 1","output":"1 3 6"},{"id":1735151786807,"input":"5\n1 2 3 4 3","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Code Practise\\geeks for geeks\\Find duplicates.cpp","group":"local","local":true}
