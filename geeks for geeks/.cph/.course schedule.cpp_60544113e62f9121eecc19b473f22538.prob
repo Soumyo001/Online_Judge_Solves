@@ -1,0 +1,1 @@
+{"name":"Local: course schedule","url":"/mnt/partition1/Code Practise/geeks for geeks/course schedule.cpp","tests":[{"id":1735925428970,"input":"2 1\n1 0","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/course schedule.cpp","group":"local","local":true}
