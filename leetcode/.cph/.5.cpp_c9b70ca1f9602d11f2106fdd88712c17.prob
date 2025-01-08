@@ -1,0 +1,1 @@
+{"name":"Local: 5","url":"/mnt/partition1/Code Practise/leetcode/5.cpp","tests":[{"id":1736348344493,"input":"cbbd","output":"bb"},{"id":1736348351732,"input":"babad","output":"aba"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/leetcode/5.cpp","group":"local","local":true}
