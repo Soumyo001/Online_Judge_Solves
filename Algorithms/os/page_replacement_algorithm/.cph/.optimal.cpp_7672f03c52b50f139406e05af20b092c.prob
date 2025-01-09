@@ -1,1 +1,0 @@
-{"name":"Local: optimal","url":"e:\\Code Practise\\Algorithms\\os\\page_replacement_algorithm\\optimal.cpp","tests":[{"id":1728292690734,"input":"4\n20\n7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Code Practise\\Algorithms\\os\\page_replacement_algorithm\\optimal.cpp","group":"local","local":true}

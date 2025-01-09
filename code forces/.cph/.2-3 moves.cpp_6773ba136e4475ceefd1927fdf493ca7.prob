@@ -1,1 +1,0 @@
-{"name":"Local: 2-3 moves","url":"/mnt/partition1/Code Practise/code forces/2-3 moves.cpp","tests":[{"id":1736262360195,"input":"5\n1\n3\n4\n12\n11","output":"2\n1\n2\n4\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/code forces/2-3 moves.cpp","group":"local","local":true}

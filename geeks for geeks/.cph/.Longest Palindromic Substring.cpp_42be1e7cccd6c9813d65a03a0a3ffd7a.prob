@@ -1,1 +1,0 @@
-{"name":"Local: Longest Palindromic Substring","url":"/mnt/partition1/Code Practise/geeks for geeks/Longest Palindromic Substring.cpp","tests":[{"id":1736350865143,"input":"aaaabbaa","output":"aabbaa"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/Longest Palindromic Substring.cpp","group":"local","local":true}

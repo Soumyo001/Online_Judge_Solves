@@ -1,1 +1,0 @@
-{"name":"Local: Reversed Linked List","url":"e:\\Code Practise\\hacker-earth\\Reversed Linked List.cpp","tests":[{"id":1729450488529,"input":"9\n2 18 24 3 5 7 9 6 12","output":"24 18 2 3 5 7 9 12 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Code Practise\\hacker-earth\\Reversed Linked List.cpp","group":"local","local":true}
