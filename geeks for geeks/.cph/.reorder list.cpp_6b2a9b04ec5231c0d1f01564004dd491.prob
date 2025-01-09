@@ -1,0 +1,1 @@
+{"name":"Local: reorder list","url":"/mnt/partition1/Code Practise/geeks for geeks/reorder list.cpp","tests":[{"id":1736441282630,"input":"1 2 3","output":"1 3 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/reorder list.cpp","group":"local","local":true}
