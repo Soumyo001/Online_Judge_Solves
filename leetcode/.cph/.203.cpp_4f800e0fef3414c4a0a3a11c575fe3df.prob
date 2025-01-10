@@ -1,1 +1,0 @@
-{"name":"Local: 203","url":"/mnt/partition1/Code Practise/leetcode/203.cpp","tests":[{"id":1736452495928,"input":"1 2 6 3 4 5 6\n6","output":"1 2 3 4 5"},{"id":1736453297830,"input":"1 1 2 2 2 2\n1","output":"2 2 2 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/leetcode/203.cpp","group":"local","local":true}

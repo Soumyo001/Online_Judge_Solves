@@ -1,1 +1,0 @@
-{"name":"Local: String query","url":"e:\\Code Practise\\hacker-earth\\String query.cpp","tests":[{"id":1729059904830,"input":"abcdbcaab\n5\n2 a\n1 c\n1 d\n3 b\n2 a","output":"abbc"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Code Practise\\hacker-earth\\String query.cpp","group":"local","local":true}
