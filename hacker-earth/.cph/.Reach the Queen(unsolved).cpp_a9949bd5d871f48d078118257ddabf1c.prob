@@ -1,0 +1,1 @@
+{"name":"Local: Reach the Queen(unsolved)","url":"/mnt/partition1/Code Practise/hacker-earth/Reach the Queen(unsolved).cpp","tests":[{"id":1736259887636,"input":"4 3\n1 2\n2 4\n3 2","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/hacker-earth/Reach the Queen(unsolved).cpp","group":"local","local":true}

@@ -1,0 +1,214 @@
+#include  < iostream > 
+#include  < vector > 
+#include  < string > 
+#include  < iomanip > 
+#include  < cstdlib > 
+#include  < ext/pb_ds/assoc_container.hpp >  
+#include  < ext/pb_ds/tree_policy.hpp >  
+using namespace __gnu_pbds ;  
+
+
+
+
+
+
+
+
+void clearConsole (  )   { 
+#ifdef _WIN32
+    system (  " cls "  )  ; 
+#else
+    system (  " clear "  )  ; 
+#endif
+ } 
+
+
+
+class BankAccount  { 
+private : 
+    int accountNumber ;                 
+    std :: string accountHolderName ;     
+    double balance ;                    
+    std :: string accountType ;           
+
+public : 
+    
+    BankAccount ( int accNo ,  const std :: string &  name ,  double initialBalance ,  const std :: string &  type ) 
+         :  accountNumber ( accNo )  ,  accountHolderName ( name )  ,  balance ( initialBalance )  ,  accountType ( type )   {  } 
+
+    
+
+    void deposit ( double amount )   { 
+        if  ( amount  <=  0 )   { 
+            std :: cerr  <<   " Error :  Deposit amount must be positive.\n "  ; 
+            return ; 
+         } 
+        balance  +=  amount ; 
+        std :: cout  <<   " Deposited :   "   <<  amount  <<   " \n "  ; 
+        std :: cout  <<   " Updated Balance :   "   <<  balance  <<   " \n "  ; 
+     } 
+
+    
+
+    void withdraw ( double amount )   { 
+        if  ( amount  >  balance )   { 
+            std :: cerr  <<   " Error :  Insufficient balance.\n "  ; 
+            return ; 
+         } 
+        balance  -=  amount ; 
+        std :: cout  <<   " Withdrew :   "   <<  amount  <<   " \n "  ; 
+        std :: cout  <<   " Remaining Balance :   "   <<  balance  <<   " \n "  ; 
+     } 
+
+    
+    void displayAccountDetails (  )  const  { 
+        std :: cout  <<   " \n ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n "  ; 
+        std :: cout  <<   " Account Number :   "   <<  accountNumber  <<   " \n "  ; 
+        std :: cout  <<   " Account Holder :   "   <<  accountHolderName  <<   " \n "  ; 
+        std :: cout  <<   " Account Type :   "   <<  accountType  <<   " \n "  ; 
+        std :: cout  <<   " Balance :   "   <<  std :: fixed  <<  std :: setprecision ( 2 )   <<  balance  <<   " \n "  ; 
+        std :: cout  <<   "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n "  ; 
+     } 
+
+    int getAccountNumber (  )  const  {  return accountNumber ;   } 
+    std :: string getAccountHolderName (  )  const  {  return accountHolderName ;   } 
+ }  ; 
+
+
+void displayMenu (  )   { 
+    
+
+    std :: cout  <<   " \n ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  = \n "  ; 
+    std :: cout  <<   "         Bank Management System         \n "  ; 
+    std :: cout  <<   "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  = \n "  ; 
+    std :: cout  <<   " 1. Create New Account\n "  ; 
+    std :: cout  <<   " 2. Deposit Money\n "  ; 
+    std :: cout  <<   " 3. Withdraw Money\n "  ; 
+    std :: cout  <<   " 4. Display Account Details\n "  ; 
+    std :: cout  <<   " 5. List All Accounts\n "  ; 
+    std :: cout  <<   " 6. Exit\n "  ; 
+    std :: cout  <<   "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  = \n "  ; 
+    std :: cout  <<   " Enter your choice :   "  ; 
+ } 
+
+BankAccount *  findAccount ( std :: vector < BankAccount >  &  accounts ,  int accountNumber )   { 
+    
+
+    for  ( auto &  account  :  accounts )   { 
+        if  ( account.getAccountNumber (  )   ==  accountNumber )   { 
+            return  & account ; 
+         } 
+     } 
+    return nullptr ; 
+ } 
+
+
+void listAllAccounts ( const std :: vector < BankAccount >  &  accounts )   { 
+    
+
+    if  ( accounts.empty (  )  )   { 
+        std :: cout  <<   " No accounts available.\n "  ; 
+        return ; 
+     } 
+    std :: cout  <<   " \nAll Bank Accounts : \n "  ; 
+    std :: cout  <<   "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n "  ; 
+    for  ( const auto &  account  :  accounts )   { 
+        std :: cout  <<   " Account Number :   "   <<  account.getAccountNumber (  )   <<   " \n "  ; 
+        std :: cout  <<   " Account Holder :   "   <<  account.getAccountHolderName (  )   <<   " \n "  ; 
+        std :: cout  <<   "  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - \n "  ; 
+     } 
+ } 
+
+int main (  )   { 
+    
+
+    std :: vector < BankAccount >  accounts ; 
+    int choice ,  accountNumber ; 
+    double amount ; 
+    std :: string name ,  type ; 
+
+    do  { 
+        clearConsole (  )  ; 
+        displayMenu (  )  ; 
+        std :: cin  >>  choice ; 
+        std :: cin.ignore (  )  ;  
+
+        switch  ( choice )   { 
+        case 1 :  
+            
+
+            std :: cout  <<   " Enter Account Number :   "  ; 
+            std :: cin  >>  accountNumber ; 
+            std :: cin.ignore (  )  ; 
+            std :: cout  <<   " Enter Account Holder ' s Name :   "  ; 
+            std :: getline ( std :: cin ,  name )  ; 
+            std :: cout  <<   " Enter Account Type  ( Savings/Checking )  :   "  ; 
+            std :: getline ( std :: cin ,  type )  ; 
+            std :: cout  <<   " Enter Initial Balance :   "  ; 
+            std :: cin  >>  amount ; 
+
+            
+            accounts.emplace_back ( accountNumber ,  name ,  amount ,  type )  ; 
+            std :: cout  <<   " Account created successfully ! \n "  ; 
+            break ; 
+
+        case 2 :  
+            std :: cout  <<   " Enter Account Number :   "  ; 
+            std :: cin  >>  accountNumber ; 
+             { 
+                BankAccount *  account  =  findAccount ( accounts ,  accountNumber )  ; 
+                if  ( account )   { 
+                    std :: cout  <<   " Enter Amount to Deposit :   "  ; 
+                    std :: cin  >>  amount ; 
+                    account -  > deposit ( amount )  ; 
+                 }  else  { 
+                    std :: cerr  <<   " Error :  Account not found.\n "  ; 
+                 } 
+             } 
+            break ; 
+
+        case 3 :  
+            std :: cout  <<   " Enter Account Number :   "  ; 
+            std :: cin  >>  accountNumber ; 
+             { 
+                BankAccount *  account  =  findAccount ( accounts ,  accountNumber )  ; 
+                if  ( account )   { 
+                    std :: cout  <<   " Enter Amount to Withdraw :   "  ; 
+                    std :: cin  >>  amount ; 
+                    account -  > withdraw ( amount )  ; 
+                 }  else  { 
+                    std :: cerr  <<   " Error :  Account not found.\n "  ; 
+                 } 
+             } 
+            break ; 
+
+        case 4 :  
+            std :: cout  <<   " Enter Account Number :   "  ; 
+            std :: cin  >>  accountNumber ; 
+             { 
+                BankAccount *  account  =  findAccount ( accounts ,  accountNumber )  ; 
+                if  ( account )   { 
+                    account -  > displayAccountDetails (  )  ; 
+                 }  else  { 
+                    std :: cerr  <<   " Error :  Account not found.\n "  ; 
+                 } 
+             } 
+            break ; 
+
+        case 5 :  
+            listAllAccounts ( accounts )  ; 
+            break ; 
+
+        case 6 :  
+            std :: cout  <<   " Goodbye ! \n "  ; 
+            break ; 
+
+        default : 
+            std :: cerr  <<   " Invalid option. Try again.\n "  ; 
+         } 
+        std :: cout  <<   " \nPress Enter to continue... "  ; 
+        std :: cin.ignore ( std :: numeric_limits < std :: streamsize >  :: max (  )  ,   ' \n '  )  ; 
+     }  while  ( choice  !=  6 )  ; 
+
+    return 0 ; 
+ } 
