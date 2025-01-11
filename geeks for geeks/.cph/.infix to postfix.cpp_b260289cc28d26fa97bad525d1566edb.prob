@@ -1,0 +1,1 @@
+{"name":"Local: infix to postfix","url":"/mnt/partition1/Code Practise/geeks for geeks/infix to postfix.cpp","tests":[{"id":1736493229275,"input":"a+b*(c^d-e)^(f+g*h)-i","output":"abcd^e-fgh*+^*+i-\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/infix to postfix.cpp","group":"local","local":true}

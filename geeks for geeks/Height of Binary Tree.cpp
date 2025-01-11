@@ -63,12 +63,9 @@ Node* buildTree(string str) {
 class Solution {
   public:
 
-    int height(struct Node* node) {
-        if(node == NULL) return -1;
-        
-        int h = max(h, height(node->left)+1);
-        int m = max(m, height(node->right)+1);
-        return max(h,m);
+    int height(struct Node* root) {
+        if(root == NULL) return -1;
+        return max(height(root->left)+1, height(root->right)+1);
     }
 };
 

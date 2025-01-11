@@ -1,0 +1,1 @@
+{"name":"Local: 2095","url":"/mnt/partition1/Code Practise/leetcode/2095.cpp","tests":[{"id":1736502364958,"input":"1 3 4 7 1 2 6","output":"1 3 4 1 2 6 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/leetcode/2095.cpp","group":"local","local":true}

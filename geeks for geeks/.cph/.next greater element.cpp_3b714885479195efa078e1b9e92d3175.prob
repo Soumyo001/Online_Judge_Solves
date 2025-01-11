@@ -1,0 +1,1 @@
+{"name":"Local: next greater element","url":"/mnt/partition1/Code Practise/geeks for geeks/next greater element.cpp","tests":[{"id":1736497845629,"input":"1 3 2 4","output":"3 4 4 -1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/next greater element.cpp","group":"local","local":true}
