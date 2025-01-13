@@ -37,7 +37,14 @@ TreeNode* invertTree(TreeNode* root) {
     return root;
 }
 
-  int main(void){
+void inorder_trav(TreeNode* root){
+    if(root == NULL) return;
+    inorder_trav(root->left);
+    cout<<root->val<<" ";
+    inorder_trav(root->right);
+}
+
+int main(void){
     TreeNode* root = new TreeNode(4);
     TreeNode* n1 = new TreeNode(2);
     TreeNode* n2 = new TreeNode(3);
@@ -52,4 +59,6 @@ TreeNode* invertTree(TreeNode* root) {
     n1->right = n2;
     n6->left = n5;
     n6->right = n7;
+    TreeNode* ans = invertTree(root);
+    inorder_trav(ans);
 }
