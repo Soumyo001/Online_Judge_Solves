@@ -1,0 +1,1 @@
+{"name":"Local: lca in bst","url":"/mnt/partition1/Code Practise/geeks for geeks/lca in bst.cpp","tests":[{"id":1736849475887,"input":"5 4 6 3 N N 7 N N N 8\n7 8","output":"7\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/lca in bst.cpp","group":"local","local":true}

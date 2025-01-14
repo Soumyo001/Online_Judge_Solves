@@ -1,0 +1,1 @@
+{"name":"Local: Check for BST","url":"/mnt/partition1/Code Practise/geeks for geeks/Check for BST.cpp","tests":[{"id":1736844256923,"input":"2 1 3 N N N 5","output":"true\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/Check for BST.cpp","group":"local","local":true}
