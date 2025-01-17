@@ -32,7 +32,7 @@ ll maxFun(vector<int>& indegree, unordered_map<int,bool>& vis, unordered_map<int
     while(!q.empty()){
         int u = q.front();q.pop();
         vis[u] = true;
-        for(const auto& v : cond_graph[u]){
+        for(const auto& v : cond_graph[u]){  
             if(!vis[v] && dp[v] < dp[u] + sccCost[v]){
                 dp[v] = dp[u] + sccCost[v];
                 q.push(v);
