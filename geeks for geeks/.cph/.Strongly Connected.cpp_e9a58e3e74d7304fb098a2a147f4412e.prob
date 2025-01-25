@@ -1,0 +1,1 @@
+{"name":"Local: Strongly Connected","url":"/mnt/partition1/Code Practise/geeks for geeks/Strongly Connected.cpp","tests":[{"id":1737211565317,"input":"5\n4\n1 2\n2 3\n0 4\n0 2","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/Strongly Connected.cpp","group":"local","local":true}
