@@ -1,0 +1,1 @@
+{"name":"Local: CopyCopyCopyCopyCopy","url":"/mnt/partition1/Code Practise/code forces/CopyCopyCopyCopyCopy.cpp","tests":[{"id":1742148815504,"input":"2\n3\n3 2 1\n6\n3 1 4 1 5 9","output":"3\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/code forces/CopyCopyCopyCopyCopy.cpp","group":"local","local":true}
