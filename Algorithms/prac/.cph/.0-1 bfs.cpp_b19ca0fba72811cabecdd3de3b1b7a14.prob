@@ -1,0 +1,1 @@
+{"name":"Local: 0-1 bfs","url":"/mnt/partition1/Code Practise/Algorithms/prac/0-1 bfs.cpp","tests":[{"id":1754661634601,"input":"7 7\n1 2\n3 2\n3 4\n7 4\n6 2\n5 6\n7 5","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/Algorithms/prac/0-1 bfs.cpp","group":"local","local":true}
