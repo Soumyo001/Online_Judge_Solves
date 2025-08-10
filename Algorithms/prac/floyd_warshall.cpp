@@ -7,7 +7,7 @@ int n,m;
 int main(void){
     cin>>n>>m;
     for(int i=1;i<=n;++i){
-        for(int j=1;j<=m;++j){
+        for(int j=1;j<=n;++j){
             if(i == j) dist[i][j] = 0;
             else dist[i][j] = INT_MAX;
         }
