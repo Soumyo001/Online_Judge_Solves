@@ -1,16 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(void){
-    int n,cte=0,cto=0,ide,ido;
-    cin>>n;
-    for(int i=1;i<=n;i++){
-        int x;cin>>x;
-        if(x&1){
-            cto++;ido=i;
+    int n;cin>>n;
+    vector<int> v(n, 0);
+    int even=0, odd=0, pos1, pos2;
+    int pos;
+    for(int i=0;i<n;++i) {
+        cin>>v[i];
+        if(v[i] % 2 !=0){
+            ++odd;
+            pos2 = i+1;
         }else{
-            cte++;ide=i;
+            ++even;
+            pos1 = i+1;
         }
     }
-    cout<<(cte==1 ? ide :ido);
-    cout<<endl;
+    cout<<(even > odd ? pos2:pos1);
 }

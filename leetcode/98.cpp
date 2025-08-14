@@ -10,42 +10,39 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode* build(queue<int>& q, unordered_map<int,int>& pos, int start, int end){
+TreeNode* build(vector<int>& pre_order,vector<int>& in_order,unordered_map<int,int>& pos,int start,int end){
+    static int idx=0;
     if(start>end) return NULL;
-    int curr = q.front();q.pop();
-    auto n = new TreeNode(curr);
-    if(start == end) return n;
-    n->left = build(q, pos, start, pos[curr] - 1);
-    n->right = build(q,pos, pos[curr] + 1, end);
-    return n;
+    int curr=pre_order[idx];
+    idx++;
+    TreeNode* p=new TreeNode(curr);
+    if(start==end) return p;
+    p->left=build(pre_order,in_order,pos,start,pos[curr]-1);
+    p->right=build(pre_order,in_order,pos,pos[curr]+1,end);
+    return p;
 }
 
-void inorder_trav(TreeNode* root, vector<int>& res){
+void inorder(TreeNode* root, vector<int>& n){
     if(root == NULL) return;
-    inorder_trav(root->left, res);
-    res.push_back(root->val);
-    inorder_trav(root->right, res);
+    inorder(root->left, n);
+    n.push_back(root->val);
+    inorder(root->right, n);
 }
 
-bool isValidBST(TreeNode* root){
-    vector<int> res;
-    inorder_trav(root, res);
-    if(res.size() == 1) return true;
-    if(res.size() == 2) if(res[0]<res[1]) return true; else return false;
-    bool is = true;
-    for(int i = 1;i<res.size()-1;++i) is &= (res[i-1]<res[i] && res[i]<=res[i+1]);
-    return is;
+bool isValidBST(TreeNode* root) {
+    vector<int> n;
+    inorder(root, n);
+    for(int i=0;i<n.size()-1;++i) if(n[i] >= n[i+1]) return false;
+    return true;
 }
 
 int main(void){
     int n;cin>>n;
     vector<int> pre(n,0);
     vector<int> in(n, 0);
-    queue<int> q;
     unordered_map<int,int> pos;
     for(int i=0;i<n;++i) cin>>in[i], pos[in[i]] = i;
-    for(int i=0;i<n;++i) cin>>pre[i], q.push(pre[i]);
-    TreeNode* root = build(q,pos,0,pre.size()-1);
-
+    for(int i=0;i<n;++i) cin>>pre[i];
+    TreeNode* root = build(pre,in,pos,0,pre.size()-1);
     cout<<isValidBST(root);
 }
