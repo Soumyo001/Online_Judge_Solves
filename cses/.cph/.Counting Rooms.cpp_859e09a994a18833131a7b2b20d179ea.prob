@@ -1,0 +1,1 @@
+{"name":"Local: Counting Rooms","url":"/mnt/partition1/Code Practise/cses/Counting Rooms.cpp","tests":[{"id":1755187877491,"input":"5 8\n########\n#..#...#\n####.#.#\n#..#...#\n########","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/cses/Counting Rooms.cpp","group":"local","local":true}
