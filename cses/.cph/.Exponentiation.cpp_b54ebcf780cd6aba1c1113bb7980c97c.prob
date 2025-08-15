@@ -1,0 +1,1 @@
+{"name":"Local: Exponentiation","url":"/mnt/partition1/Code Practise/cses/Exponentiation.cpp","tests":[{"id":1755260047764,"input":"3\n3 4\n2 8\n123 123","output":"81\n256\n921450052"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/cses/Exponentiation.cpp","group":"local","local":true}
