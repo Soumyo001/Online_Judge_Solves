@@ -1,0 +1,1 @@
+{"name":"Local: Trailing Zeros","url":"/mnt/partition1/Code Practise/cses/Trailing Zeros.cpp","tests":[{"id":1755353989082,"input":"20","output":"4"},{"id":1755356998546,"input":"850915850","output":"212728957"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/cses/Trailing Zeros.cpp","group":"local","local":true}
