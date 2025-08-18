@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 1e5+10;
+const int N  = 1e5+10;
 vector<int> graph[N];
-vector<int> parent(N, -1);
-vector<bool> vis(N, false);
-int n,m,cS=-1,cE=-1;
-
+vector<int> parent(N, - 1);
+unordered_map<int,bool> vis;
+int n,m;
+int cS = -1, cE = -1;
 void inputGraph(){
     for(int i=0;i<m;++i){
         int u,v;cin>>u>>v;
@@ -20,8 +20,8 @@ bool dfs(int vertex, int par){
     for(const auto& i:graph[vertex]){
         if(vis[i] && i == par) continue;
         if(vis[i]){
-            cS = i;
             cE = vertex;
+            cS = i;
             return true;
         }
         if(dfs(i,vertex)) return true;
@@ -29,12 +29,11 @@ bool dfs(int vertex, int par){
     return false;
 }
 
-vector<int> find(){
+vector<int> path(){
     vector<int> res;
-    int v = cE;
     res.push_back(cS);
-    while (v!=cS)
-    {
+    int v = cE;
+    while(v!=cS){
         res.push_back(v);
         v = parent[v];
     }
@@ -46,19 +45,16 @@ vector<int> find(){
 int main(void){
     cin>>n>>m;
     inputGraph();
-    vector<int> path;
     for(int i=1;i<=n;++i){
         if(!vis[i]){
-            cS = -1, cE = -1;
-            if(dfs(i,-1) && cS != -1 && cE != -1){
-                path = find();
-                break;
-            }
+            if(dfs(i,-1)) break;
         }
     }
-    if(cS == -1 || cE == -1) cout<<"IMPOSSIBLE\n";
-    else{
-        cout<<path.size()<<"\n";
-        for(auto i:path) cout<<i<<" ";
+    if(cS == -1 || cE == -1){
+        cout<<"IMPOSSIBLE\n";
+        return 0;
     }
+    vector<int> ans = path();
+    cout<<ans.size()<<"\n";
+    for(int i:ans) cout<<i<<" ";
 }
