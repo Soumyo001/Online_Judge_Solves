@@ -40,7 +40,7 @@ void bellman(){
                 dist[j.dest] = dist[j.src] + j.wt;
                 parent[j.dest] = j.src;
                 flag = false;
-            }else if(dist[j.src] ==LLONG_MAX && dist[j.dest] == LLONG_MAX) {
+            }else if(dist[j.src] == LLONG_MAX && dist[j.dest] == LLONG_MAX) {
                 dist[j.src] = 0;
                 dist[j.dest] = dist[j.src] + j.wt;
             }
