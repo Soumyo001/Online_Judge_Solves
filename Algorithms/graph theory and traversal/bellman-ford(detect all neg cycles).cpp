@@ -8,6 +8,7 @@ struct Edge{
 int n,m,s;
 vector<Edge> edges;
 void find_cycle(int node){
+    for(int i=0;i<n;++i) node = parent[node];
     vector<int>cycleN;
     cycleN.push_back(node);
     int tempN=node;
