@@ -1,0 +1,1 @@
+{"name":"Local: 144","url":"/mnt/partition1/Code Practise/leetcode/144.cpp","tests":[{"id":1760451178439,"input":"5\n4 9 5 1 0\n1 5 9 4 0","output":"4 9 5 1 0 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/leetcode/144.cpp","group":"local","local":true}

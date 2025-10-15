@@ -10,29 +10,28 @@ using namespace std;
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
 
-vector<int> rightSideView(TreeNode* root){
+vector<int> rightSideView(TreeNode* root) {
     if(root == NULL) return {};
     queue<TreeNode*> q;
-    vector<int> ans;
     q.push(root);
-    int n = q.size();
+    int sz = q.size();
     q.push(NULL);
-    int i = 0;
-    while (!q.empty())
-    {
-        TreeNode* t = q.front();q.pop();
-        if(t!=NULL){
-            if(i == n - 1) ans.push_back(t->val);
-            if(t->left!=NULL) q.push(t->left);
-            if(t->right!=NULL) q.push(t->right);
-            ++i;
+    vector<int> v;
+    int c = 0;
+    while(!q.empty()){
+        const TreeNode* n = q.front();q.pop();
+        if(n != NULL){
+            if(n->left != NULL) q.push(n->left);
+            if(n->right != NULL) q.push(n->right);
+            ++c;
+            if(c == sz) v.push_back(n->val);
         }else if(!q.empty()){
-            i = 0;
-            n = q.size();
+            sz = q.size();
+            c = 0;
             q.push(NULL);
         }
     }
-    return ans;
+    return v;
 }
 
  int main(void){

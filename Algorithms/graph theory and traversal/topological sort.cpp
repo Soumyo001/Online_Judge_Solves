@@ -14,15 +14,12 @@ void inputGraph(){
     }
 }
 
-void topSort(int vertex){
+void topSort(int vertex, bool useTime = false){
     vis[vertex] = true;
-    dis[vertex] = t++;
-    for(const auto& i : graph[vertex]){
-        if(vis[i]) continue;
-        topSort(i);
-    }
-    f[vertex] = t++;
-    st.push(vertex);
+    if(useTime) dis[vertex] = t++;
+    for(const auto& i : graph[vertex]) if(!vis[i]) topSort(i, useTime);
+    if(useTime) f[vertex] = t++;
+    if(!useTime) st.push(vertex);
 }
 
 void topSort2(){
@@ -45,7 +42,7 @@ void topSort2(){
 
 void topSortDFSWithFinishingTimes(){
     for(int i=1;i<=n;++i) vis[i] = false;
-    for(int i=1;i<=n;++i) if(!vis[i]) topSort(i);
+    for(int i=1;i<=n;++i) if(!vis[i]) topSort(i, true);
     vector<pair<int,int>> v(f.begin(),f.end());
     sort(v.begin(),v.end(),[](const pair<int,int>& a,const pair<int,int>& b){
         return a.second > b.second;
