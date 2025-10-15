@@ -11,25 +11,24 @@ using namespace std;
  };
 
 TreeNode* invertTree(TreeNode* root) {
-    if(root == NULL) return root;
+    if(!root) return root;
     queue<TreeNode*> q;
     q.push(root);
     q.push(NULL);
-    while (!q.empty())
-    {
-        auto n = q.front();q.pop();
-        if(n!=NULL){
-            if(n->left!=NULL && n->right!=NULL){
-                swap(n->left,n->right);
+    while(!q.empty()){
+        TreeNode* n = q.front();q.pop();
+        if(n != NULL){
+            if(n->left != NULL && n->right != NULL){
+                swap(n->left, n->right);
                 q.push(n->left);
                 q.push(n->right);
-            }else if(n->left!=NULL){
-                n->right=n->left;
-                n->left=NULL;
+            }else if(n->left != NULL){
+                n->right = n->left;
+                n->left = NULL;
                 q.push(n->right);
-            }else if(n->right!=NULL){
-                n->left=n->right;
-                n->right=NULL;
+            }else if(n->right != NULL){
+                n->left = n->right;
+                n->right = NULL;
                 q.push(n->left);
             }
         }else if(!q.empty()) q.push(NULL);
