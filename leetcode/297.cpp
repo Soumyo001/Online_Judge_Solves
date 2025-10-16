@@ -58,48 +58,31 @@ TreeNode* buildTree(string str) {
     return root;
 }
 
-void inorder_trav(TreeNode* root, vector<int>& nodes){
-    if(root == NULL) {
-        nodes.push_back(INT_MIN);
-        return;
-    };
-    nodes.push_back(root->val);
-    inorder_trav(root->left, nodes);
-    inorder_trav(root->right, nodes);
-}
-
 string serialize(TreeNode* root) {
-    vector<int> nodes;
-    inorder_trav(root, nodes);
-    string s = "";
-    for(auto i : nodes){
-        if(i == INT_MIN) s+="N,";
-        else s+=to_string(i)+",";
-    }
-    if(!nodes.empty()) s.pop_back();
-    // cout<<s<<"\n";
-    return s;
+    if(root == NULL) return "null,";
+    return to_string(root->val) + "," + serialize(root->left) + serialize(root->right);
 }
 
-TreeNode* deserRec(queue<int>& q){
-    int n = q.front();q.pop();
-    if(n == INT_MIN) return nullptr;
-    TreeNode* t = new TreeNode(n);
-    t->left = deserRec(q);
-    t->right = deserRec(q);
-    return t;
+TreeNode* deserialize_helper(queue<string>& q){
+    string s = q.front(); q.pop();
+    if(s == "null") return NULL;
+    TreeNode* root = new TreeNode(stoi(s));
+    root->left = deserialize_helper(q);
+    root->right = deserialize_helper(q);
+    return root;
 }
 
 TreeNode* deserialize(string data) {
-    stringstream ss(data);
-    string val;
-    queue<int> q;
-    while(getline(ss, val, ',')){
-        int n = val == "N"? INT_MIN:stoi(val);
-        // cout<<n<<" ";
-        q.push(n);
+    queue<string> q;
+    string s = "";
+    for(int i=0; i<data.size(); ++i){
+        if(data[i] == ','){
+            q.push(s);
+            s = "";
+        }else s += data[i];
     }
-    return deserRec(q);
+    // if(s.size()!=0) q.push(s); // no need if guranteed last index has an ','
+    return deserialize_helper(q);
 }
 
 void inorder(TreeNode* root){
@@ -119,7 +102,6 @@ int main() {
         string treeString;
         getline(cin, treeString);
         TreeNode *root = buildTree(treeString);
-
         TreeNode* getRoot = deserialize(serialize(root));
         inorder(getRoot);
 
