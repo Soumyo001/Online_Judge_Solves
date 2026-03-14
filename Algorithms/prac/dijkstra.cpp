@@ -2,31 +2,29 @@
 using namespace std;
 const int N=1e5+5;
 vector<pair<int,int>> graph[N];
-int dist[N];
-bool visited[N];
+unordered_map<int, int> dist;
+unordered_map<int, bool> vis;
 int n,m,src;
 void initGraph(){
-    for(int i=0;i<m;i++){
+    for(int i=0;i<m;++i) {
         int u,v,wt;cin>>u>>v>>wt;
-        graph[u].push_back({v,wt});
+        graph[u].push_back({v, wt});
     }
-    //for(int i=1;i<=n;i++) dist[i]=numeric_limits<int>::max();
-    memset(dist,1e9+5,sizeof(dist));
+    for(int i=1;i<=n;++i) dist[i] = INT_MAX, vis[i] = false;
 }
-void dijkstra(){
-    multiset<pair<int,int>> s;
-    s.insert({0,src});
-    dist[src]=0;
-    while(!s.empty()){
-        int vertex=s.begin()->second;
-        int vertex_dist=s.begin()->first;
-        s.erase(s.begin());
-        if(visited[vertex]) continue;
-        visited[vertex]=true;
-        for(auto& i:graph[vertex]){
-            if(dist[i.first]>dist[vertex]+i.second){
-                dist[i.first]=dist[vertex]+i.second;
-                s.insert({dist[i.first],i.first});
+void dijkstra(int source){
+    multiset<pair<int, int>> m;
+    m.insert({0, source});
+    dist[source] = 0;
+    while(!m.empty()) {
+        auto [d, n] = *m.begin();
+        m.erase(m.begin());
+        if(vis[n]) continue;
+        vis[n] = true;
+        for(const auto& i: graph[n]) {
+            if(dist[i.first] > dist[n] + i.second) {
+                dist[i.first] = dist[n] + i.second;
+                m.insert({dist[i.first], i.first});
             }
         }
     }
@@ -37,6 +35,6 @@ void printDist(){
 int main(void){
     cin>>n>>m>>src;
     initGraph();
-    dijkstra();
+    dijkstra(src);
     printDist();
 }
