@@ -1,0 +1,1 @@
+{"name":"Local: trapping-rain-water","url":"/mnt/partition1/Code Practise/geeks for geeks/trapping-rain-water.cpp","tests":[{"id":1773597742426,"input":"7\n3 0 1 0 4 0 2","output":"10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/geeks for geeks/trapping-rain-water.cpp","group":"local","local":true}
