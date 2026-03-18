@@ -3,35 +3,15 @@ using namespace std;
 
 class Solution {
   public:
-    bool isAnagram(string s1,string s2){
-        if(s1.length()!=s2.length()) return false;
-        bool is = true;
-        sort(s1.begin(),s1.end());
-        sort(s2.begin(),s2.end());
-        for(int i=0;i<s1.length();++i) if(s1[i]!=s2[i]){
-            is=false;
-            break;
-        }
-        return is;
-    }
     vector<vector<string>> anagrams(vector<string>& arr) {
+        unordered_map<string, vector<string>> res;
         vector<vector<string>> ans;
-        vector<bool> vis(arr.size(),false);
-        for(int i=0;i<arr.size();++i){
-            if(!vis[i]){
-                vector<string> a;
-                for(int j=i;j<arr.size();++j){
-                    if(isAnagram(arr[i],arr[j])){
-                        a.push_back(arr[j]);
-                        vis[j]=true;
-                    }
-                }
-                ans.push_back(a);
-            }
+        for(const string s: arr) {
+            string k = s;
+            sort(k.begin(), k.end());
+            res[k].push_back(s);
         }
-        vector<string> a;
-        for(int i=0;i<arr.size();++i) if(!vis[i]) a.push_back(arr[i]);
-        if(!a.empty()) ans.push_back(a);
+        for(const auto& it: res) ans.push_back(it.second);
         return ans;
     }
 };
@@ -39,7 +19,6 @@ class Solution {
 int main() {
     int t = 1;
     // cin >> t;
-    cin.ignore();
     while (t--) {
 
         vector<string> arr;
@@ -52,13 +31,10 @@ int main() {
         }
 
         Solution ob;
-        vector<vector<string> > result = ob.anagrams(arr);
-        sort(result.begin(), result.end());
-        for (int i = 0; i < result.size(); i++) {
-            for (int j = 0; j < result[i].size(); j++) {
-                cout << result[i][j] << " ";
-            }
-            cout << "\n";
+        vector<vector<string>> result = ob.anagrams(arr);
+        for(const vector<string>& i: result) {
+            for(const string s: i) cout<<s<<" ";
+            cout<<"\n";
         }
     }
 

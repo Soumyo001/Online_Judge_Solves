@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isPalindrome(string s) {
+bool isPalinSent(string &s) {
+    // code here
     string res;
     for(const char c: s) if(isalnum(c)) res+=tolower(c);
     string rev = res;
@@ -9,7 +10,7 @@ bool isPalindrome(string s) {
     return res == rev;
 }
 
-int main(void){
-    string s;cin>>s;
-    cout<<(isPalindrome(s) ? "true":"false");
+int main(void) {
+    string s; cin >> s;
+    cout<<isPalinSent(s)<<"\n";
 }

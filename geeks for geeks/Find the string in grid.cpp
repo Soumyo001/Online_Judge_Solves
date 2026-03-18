@@ -1,36 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int dx[] = {1, -1, 0,  0, 1,  1, -1, -1 };
-int dy[] = {0,  0, 1, -1, 1, -1,  1, -1 };
-
-bool isValid(int x, int y, int r, int c){
-    return y<r && x<c && x>=0 && y>=0;
+bool is_valid(int x, int y, int n, int m) {
+    return x >=  0 && y >= 0 && x < n && y < m;
 }
-
-set<pair<int,int>> findStringInGrid(vector<vector<char>>& v, string s, vector<pair<int,int>>& pos){
-    set<pair<int,int>> ans;
-    int n = v.size();
-    int m = v[0].size();
-    for(const auto& p:pos){
-        for(int i=0;i<8;++i){
-            int nx = p.second+dx[i];
-            int ny = p.first+dy[i];
-            
-            bool found =true;
-            for(int j=1;j<s.length();++j){
-                if(!isValid(nx,ny,n,m) || s[j]!=v[ny][nx])
-                {
+vector<vector<int>> searchWord(vector<vector<char>> grid, string word) {
+    // Code here
+    vector<int> dx = {0,  0, 1, -1,  1, 1, -1, -1};
+    vector<int> dy = {-1, 1, 0,  0, -1, 1, -1,  1};
+    vector<pair<int, int>> index;
+    int n = grid.size();
+    int m = grid[0].size();
+    vector<vector<int>> ans;
+    for(int i=0; i<n; ++i)
+        for(int j=0; j<m; ++j) if(grid[i][j] == word[0]) index.push_back({i, j});
+    
+    bool found = true;
+    for(const pair<int,int>& idx: index) {
+        for(int i=0; i<8; ++i) {
+            found = true;
+            int nx = idx.first + dx[i];
+            int ny = idx.second + dy[i];
+            for(int j=1; j<word.length(); ++j) {
+                if(is_valid(nx, ny, n, m) && grid[nx][ny] == word[j]) {
+                    // ans.push_back({nx, ny});
+                    nx += dx[i];
+                    ny += dy[i];
+                    
+                } else {
                     found = false;
                     break;
                 }
-                nx+=dx[i];
-                ny+=dy[i];
             }
-            if(found) ans.insert({p.first, p.second});
-            
+            if(found) ans.push_back({idx.first, idx.second});
         }
     }
+    ans.erase(unique(ans.begin(), ans.end()), ans.end());
     return ans;
 }
 
@@ -40,10 +45,6 @@ int main(void){
     vector<vector<char>> v(n,vector<char>(m));
     for(int i=0;i<n;++i)for(int j=0;j<m;++j) cin>>v[i][j];
     string s;cin>>s;
-    vector<pair<int,int>> pos;
-    for(int i=0;i<n;++i)
-        for(int j=0;j<m;++j) if(v[i][j]==s[0]) pos.push_back({i,j});
-    
-    set<pair<int,int>> ans = findStringInGrid(v, s, pos);
-    for(auto& i:ans) cout<<i.first<<" "<<i.second<<"\n";
+    vector<vector<int>> ans = searchWord(v, s);
+    for(auto& i:ans) cout<<i[0]<<" "<<i[1]<<"\n";
 }

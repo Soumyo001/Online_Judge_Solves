@@ -19,12 +19,12 @@ void init(int node,int b,int e){
     tree[node]=merge(tree[node<<1],tree[(node<<1)+1]);
 }
 void update(int node,int b,int e,int i,int j,int x){
-    if(lazy[node]!=-1){
+    if(lazy[node]!=0){
         tree[node]+=initi((e-b+1)*lazy[node]);
         if(b!=e){
             lazy[node<<1]+=lazy[node];
             lazy[(node<<1)+1]+=lazy[node];
-        }lazy[node]=-1;
+        }lazy[node]=0;
     }
     if(e<i || j<b) return;
     if(b>=i && e<=j){
@@ -41,12 +41,12 @@ void update(int node,int b,int e,int i,int j,int x){
     tree[node]=merge(tree[node<<1],tree[(node<<1)+1]);
 }
 int query(int node,int b,int e,int i,int j){
-    if(lazy[node]!=-1){
+    if(lazy[node]!=0){
         tree[node]+=initi((e-b+1)*lazy[node]);
         if(b!=e){
             lazy[node<<1]+=lazy[node];
             lazy[(node<<1)+1]+=lazy[node];
-        }lazy[node]=-1;
+        }lazy[node]=0;
     }
     if(e<i || j<b) return 0;
     if(b>=i && e<=j) return tree[node];
@@ -56,7 +56,7 @@ int query(int node,int b,int e,int i,int j){
     return merge(n,m);
 }
 int main(void){
-    memset(lazy,-1,sizeof(lazy));
+    memset(lazy,0,sizeof(lazy));
     int n;cin>>n;
     for(int i=1;i<=n;i++) cin>>arr[i];
     init(1,1,n);

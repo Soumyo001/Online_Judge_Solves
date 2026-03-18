@@ -1,42 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N=1e5+5;
-int arr[N],tree[N*3];
-void init(int node,int b,int e){
-    if(b==e){
-        tree[node]=arr[b];
+const int N = 1e5+10;
+int arr[N], tree[N*3];
+
+int initiate(int x) {return x;}
+int merge(int a, int b) {
+    return a+b;
+}
+void init(int index,int b,int e) {
+    if(b==e) {
+        tree[index]=initiate(arr[b]);
         return;
     }
     int mid=(b+e)>>1;
-    int left=node<<1;
-    int right=(node<<1)+1;
+    int left=index<<1;
+    int right=(index<<1)+1;
     init(left,b,mid);
     init(right,mid+1,e);
-    tree[node]=tree[left]+tree[right];
+    tree[index]=merge(tree[left],tree[right]);
 }
-int query(int node,int b,int e,int i,int j){
-    if(i>e || j<b) return 0;
-    if(b>=i && e<=j) return tree[node];
+int query(int index,int b,int e,int i,int j) {
+    if(e<i || j<b) return 0;
+    if(b>=i && e<=j) return tree[index];
     int mid=(b+e)>>1;
-    int left=node<<1;
-    int right=(node<<1)+1;
+    int left=index<<1;
+    int right=(index<<1)+1;
     int p1=query(left,b,mid,i,j);
     int p2=query(right,mid+1,e,i,j);
-    return p1+p2;
+    return merge(p1,p2);
 }
-void update(int node,int b,int e,int i,int x){
+void update(int index,int b,int e,int i,int x) {
     if(e<i || i<b) return;
     if(b>=i && e<=i) {
-        tree[node]=x;
+        tree[index]=initiate(x);
         arr[i]=x;
         return;
     }
-    int mid=(b+e)>>1;
-    int left=node<<1;
-    int right=(node<<1)+1;
+    int mid=(b+e)<<1;
+    int left=index<<1;
+    int right=(index<<1)+1;
     update(left,b,mid,i,x);
     update(right,mid+1,e,i,x);
-    tree[node]=tree[left]+tree[right];
+    tree[index]=merge(tree[left],tree[right]);
 }
 int main(void){
     int n;cin>>n;

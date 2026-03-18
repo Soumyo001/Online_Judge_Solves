@@ -8,13 +8,13 @@ class Solution {
     return true;
 }
     int CountPs(string &s) {
-            int c = 0;
-    for(int i=0;i<s.length();++i){
-        for(int j=i;j<s.length();++j){
-            if(isPalindrome(s,i,j)) if(j-i+1 >= 2) ++c;
+        int c = 0;
+        for(int i=0;i<s.length();++i){
+            for(int j=i;j<s.length();++j){
+                if(isPalindrome(s,i,j)) if(j-i+1 >= 2) ++c;
+            }
         }
-    }
-    return c;
+        return c;
     }
 };
 

@@ -1,19 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main(void){
-    string s;cin>>s;
-    int mx = INT_MIN;
-    int c = 0;
-    char prevC = s[0];
-    for(int i=0;i<s.length();){
-        if(s[i]==prevC){
-            ++c;
-            ++i;
-        }else{
-            mx = max(mx, c);
-            c = 0;
-            prevC = s[i];
+    string s; cin>>s;
+    int maxP = INT_MIN;
+    char old = s[0];
+    int count = 1;
+    maxP = max(maxP, count);
+    for(int i=1; i<s.length(); ++i) {
+        if(s[i] == old) ++count;
+        else {
+            old = s[i];
+            count = 1;
         }
+        maxP = max(maxP, count);
     }
-    cout<<max(mx, c);
+    cout<<maxP;
 }
