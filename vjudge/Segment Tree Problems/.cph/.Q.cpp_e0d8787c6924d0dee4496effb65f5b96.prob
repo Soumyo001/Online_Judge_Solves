@@ -1,0 +1,1 @@
+{"name":"Local: Q","url":"/mnt/partition1/Code Practise/vjudge/Segment Tree Problems/Q.cpp","tests":[{"id":1774639806973,"input":"1\n5 3\n78 2 13 12 3\n1 1 2\n0 4 4 5\n1 1 5","output":"Case 1:\n1\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/vjudge/Segment Tree Problems/Q.cpp","group":"local","local":true}
