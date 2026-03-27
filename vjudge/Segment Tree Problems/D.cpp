@@ -61,14 +61,14 @@ int main(void) {
     seg.build(1,0,n-1,v);
     int q;cin>>q;
     while(q--) {
-        char c;cin>>c;
-        if(c == 'U') {
-            int idx,x;cin>>idx>>x;
-            seg.update(1,0,n-1,idx-1,idx-1,x);
-        } else {
-            int a,b;cin>>a>>b;
-            Node ans=seg.query(1,0,n-1,a-1,b-1);
+        char c; cin>>c;
+        if(c == 'Q') {
+            int x,y;cin>>x>>y;
+            Node ans=seg.query(1,0,n-1,x-1,y-1);
             cout<<ans.mx1+ans.mx2<<"\n";
+        } else {
+            int k,u;cin>>k>>u;
+            seg.update(1,0,n-1,k-1,k-1,u);
         }
     }
 }

@@ -3,15 +3,15 @@
 using namespace std;
 
 struct Node {
-    ll sum=0,pref=0;
+    ll sum=0,pref=0,suff=0,best=0;
 };
 class SegmentTree {
 private:
     int n;
     vector<Node> tree;
     Node initiate(ll x) {
-        if(x < 0) return {x, 0};
-        return {x, x};
+        if(x < 0) return {x,0,0,0};
+        return {x,x,x,x};
     }
     Node merge(const Node& a,const Node& b) {
         if(a.sum == LLONG_MIN) return b;
@@ -19,6 +19,8 @@ private:
         Node res;
         res.sum=a.sum+b.sum;
         res.pref=max(a.pref,a.sum+b.pref);
+        res.suff=max(b.suff,b.sum+a.suff);
+        res.best=max({a.best,b.best,a.suff+b.pref});
         return res;
     }
 public:
@@ -49,7 +51,7 @@ public:
         tree[node]=merge(tree[left],tree[right]);
     }
     Node query(int node,int b,int e,int i,int j) {
-        if(e<i || j<b) return {LLONG_MIN,LLONG_MIN};
+        if(e<i || j<b) return {LLONG_MIN,LLONG_MIN,LLONG_MIN,LLONG_MIN};
         if(b>=i && e<=j) return tree[node];
         int mid=(b+e)>>1;
         int left=(node<<1);
@@ -67,13 +69,8 @@ int main(void) {
     SegmentTree seg(n);
     seg.build(1,0,n-1,v);
     while(q--) {
-        int op;cin>>op;
-        if(op == 1) {
-            int k;ll u;cin>>k>>u;
-            seg.update(1,0,n-1,k-1,k-1,u);
-        } else {
-            int a,b;cin>>a>>b;
-            cout<<seg.query(1,0,n-1,a-1,b-1).pref<<"\n";
-        }
+        int k;ll x;cin>>k>>x;
+        seg.update(1,0,n-1,k-1,k-1,x);
+        cout<<seg.query(1,0,n-1,0,n-1).best<<"\n";
     }
 }

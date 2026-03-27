@@ -6,7 +6,7 @@ private:
     int n;
     vector<int> tree;
 public:
-    SegmentTree(int n): n(n),tree(n*4, 0) { }
+    SegmentTree(int n): n(n),tree(n*4,INT_MAX) { }
     void build(int node,int b,int e,vector<int>& arr) {
         if(b == e) {
             tree[node]=arr[b];
@@ -19,17 +19,17 @@ public:
         build(right,mid+1,e,arr);
         tree[node]=min(tree[left],tree[right]);
     }
-    void update(int node,int b,int e,int idx,int x) {
-        if(e<idx || idx<b) return;
-        if(b>=idx && e<=idx) {
+    void update(int node,int b,int e,int i,int j,int x) {
+        if(e<i || j<b) return;
+        if(b>=i && e<=j) {
             tree[node]=x;
             return;
         }
         int mid=(b+e)>>1;
         int left=(node<<1);
         int right=(node<<1)+1;
-        update(left,b,mid,idx,x);
-        update(right,mid+1,e,idx,x);
+        update(left,b,mid,i,j,x);
+        update(right,mid+1,e,i,j,x);
         tree[node]=min(tree[left],tree[right]);
     }
     int query(int node,int b,int e,int i,int j) {
@@ -46,19 +46,18 @@ public:
 
 int main(void) {
     int n,q;cin>>n>>q;
-    vector<int> v(n+1);
+    vector<int> v(n);
+    for(int i=0;i<n;++i) cin>>v[i];
     SegmentTree seg(n);
-    for(int i=1;i<=n;++i) cin>>v[i];
-    seg.build(1,1,n,v);
+    seg.build(1,0,n-1,v);
     while(q--) {
         int op;cin>>op;
         if(op == 1) {
             int k,u;cin>>k>>u;
-            seg.update(1,1,n,k,u);
-            v[k]=u;
+            seg.update(1,0,n-1,k-1,k-1,u);
         } else {
             int a,b;cin>>a>>b;
-            cout<<seg.query(1,1,n,a,b)<<"\n";
+            cout<<seg.query(1,0,n-1,a-1,b-1)<<"\n";
         }
     }
 }
