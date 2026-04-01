@@ -7,7 +7,7 @@ int main(void) {
     for(int i=0;i<n;++i) cin>>v[i];
     vector<int> ans;
     for(int i=0;i<n;++i) {
-        if(ans.empty() || ans[ans.size()-1]<v[i]) {
+        if(ans.empty() || ans.back() < v[i]) {
             ans.push_back(v[i]);
         } else {
             auto it = lower_bound(ans.begin(),ans.end(),v[i]);

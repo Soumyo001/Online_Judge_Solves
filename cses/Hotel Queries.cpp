@@ -8,7 +8,7 @@ private:
     int initiate(int x) { return x; }
     int merge(const int a, const int b) { return max(a, b); }
 public:
-    SegmentTree(int n): n(n), tree(n*4, 0) { }
+    SegmentTree(int n): n(n),tree(n*4, 0) { }
     void build(int node,int b,int e,vector<int>& arr) {
         if(b == e) {
             tree[node]=initiate(arr[b]);
@@ -21,17 +21,17 @@ public:
         build(right,mid+1,e,arr);
         tree[node]=merge(tree[left],tree[right]);
     }
-    void update(int node,int b,int e,int i,int j,int val) {
+    void update(int node,int b,int e,int i,int j,int x) {
         if(e<i || j<b) return;
         if(b>=i && e<=j) {
-            tree[node]+=val;
+            tree[node]+=x;
             return;
         }
         int mid=(b+e)>>1;
         int left=(node<<1);
         int right=(node<<1)+1;
-        update(left,b,mid,i,j,val);
-        update(right,mid+1,e,i,j,val);
+        update(left,b,mid,i,j,x);
+        update(right,mid+1,e,i,j,x);
         tree[node]=merge(tree[left],tree[right]);
     }
     int query(int node,int b,int e,int x) {
