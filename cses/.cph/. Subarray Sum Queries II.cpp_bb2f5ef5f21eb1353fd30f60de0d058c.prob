@@ -1,0 +1,1 @@
+{"name":"Local:  Subarray Sum Queries II","url":"/mnt/partition1/Code Practise/cses/ Subarray Sum Queries II.cpp","tests":[{"id":1775070599252,"input":"8 4\n2 5 1 -2 3 -1 -7 1\n2 4\n2 5\n6 7\n4 8","output":"6\n7\n0\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/cses/ Subarray Sum Queries II.cpp","group":"local","local":true}
