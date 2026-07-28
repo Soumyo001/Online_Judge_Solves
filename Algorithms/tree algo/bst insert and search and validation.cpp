@@ -28,7 +28,6 @@ bool BSTSearch(node* root,int key){
     if(root->val==key) return true;
     else if(root->val>key) return BSTSearch(root->left,key);
     else return BSTSearch(root->right,key);
-    return false;
 }
 bool valid_BST(node* root,node* min,node* max){
     if(root==NULL) return true;

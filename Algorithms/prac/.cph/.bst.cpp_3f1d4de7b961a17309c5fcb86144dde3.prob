@@ -1,0 +1,1 @@
+{"name":"Local: bst","url":"/mnt/partition1/Code Practise/Algorithms/prac/bst.cpp","tests":[{"id":1785259075671,"input":"16\n5 3 4 13 1 16 2 10 8 7 6 9 11 14 15 12\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/Algorithms/prac/bst.cpp","group":"local","local":true}

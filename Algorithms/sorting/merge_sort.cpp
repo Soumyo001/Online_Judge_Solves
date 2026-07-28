@@ -2,25 +2,24 @@
 using namespace std;
 
 void merge(vector<int>& v, int lo, int mid, int hi) {
-    int len = hi - lo + 1;
-    vector<int> a(mid - lo + 1 + 1, 0);
-    vector<int> b(hi - mid + 1, 0);
-    for(int i = 0; i < a.size() - 1; ++i) a[i] = v[lo + i];
-    for(int i = 0; i < b.size() - 1; ++i) b[i] = v[mid + 1 + i];
-    a[a.size() - 1] = b[b.size() - 1] = INT_MAX;
-    int i = 0, j = 0;
-    for(int k = lo; k <= hi; ++k) {
-        if(a[i] <= b[j]) {
-            v[k] = a[i++];
-        } else {
-            v[k] = b[j++];
-        }
+    vector<int> a(mid - lo + 1, 0);
+    vector<int> b(hi - mid, 0);
+    for(int i = 0; i < a.size(); ++i) a[i] = v[lo + i];
+    for(int i = 0; i < b.size(); ++i) b[i] = v[mid + 1 + i];
+    
+    int i = 0, j = 0, k = lo;
+    while(i < a.size() && j < b.size()) {
+        if(a[i] <= b[j]) v[k++] = a[i++];
+        else v[k++] = b[j++];
     }
+
+    while(i < a.size()) v[k++] = a[i++];
+    while(j < b.size()) v[k++] = b[j++];
 }
 
 void merge_sort(vector<int>& v, int lo, int hi) {
     if(lo < hi) {
-        int mid = (hi + lo) >> 1;
+        int mid = (lo + hi) >> 1;
         merge_sort(v, lo, mid);
         merge_sort(v, mid + 1, hi);
         merge(v, lo, mid, hi);
