@@ -83,5 +83,5 @@ int main(void){
     mergeSort(arr,0,sizeof(arr)/sizeof(arr[0])-1);
     printArr(arr,0,sizeof(arr)/sizeof(arr[0]));cout<<endl;
     insertionSort(arr,sizeof(arr)/sizeof(arr[0]));
-    printArr(arr,0,sizeof(arr)/sizeof(arr[0]));
+    printArr(&arr[0],0,sizeof(arr)/sizeof(arr[0]));
 }
