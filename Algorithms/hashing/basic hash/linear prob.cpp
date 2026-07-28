@@ -43,7 +43,7 @@ int main(void)
         int a;
         cin >> a;
         if (a == -1) break;
-       Hash::__insert(a,n);
+        Hash::__insert(a,n);
     }
     while(true){
         int a;cin>>a;
