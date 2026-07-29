@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 1e5+10;
+const int N = 1e5 + 10;
 vector<int> graph[N];
 unordered_map<int, int> level;
 unordered_map<int, bool> vis;
