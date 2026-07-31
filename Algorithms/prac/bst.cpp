@@ -72,7 +72,7 @@ int main(void) {
         int x; cin>>x;
         if(x == 1) {
             int key;cin>>key;
-            cout<<searchBST(root, key)<<"\n";
+            cout<<(searchBST(root, key) ? "FOUND":"NOT FOUND")<<"\n";
         } else if(x == 2) {
             int key; cin>>key;
             root = deleteBST(root, key);
