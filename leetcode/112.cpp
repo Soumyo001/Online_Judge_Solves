@@ -30,18 +30,13 @@ TreeNode* buildTree(int pre_order[],int in_order[],int start,int end){
     return p;
 }
 
-
-bool ans = false;
-void dfs(TreeNode* root, int sum, int target){
-    if(root->left != NULL) dfs(root->left, sum, target + root->val);
-    if(root->right != NULL) dfs(root->right, sum, target + root->val);
-    if(!ans && root->left==NULL && root->right==NULL) ans = ((target+root->val) == sum);
-}
-
 bool hasPathSum(TreeNode* root, int targetSum) {
     if(root == NULL) return false;
-    dfs(root, targetSum, 0);
-    return ans;
+    if(targetSum - root->val == 0 && root->left == NULL && root->right == NULL) return true;
+    bool has = false;
+    if(root->left != NULL) has |= hasPathSum(root->left, targetSum - root->val);
+    if(root->right != NULL) has |= hasPathSum(root->right, targetSum - root->val);
+    return has;
 }
 
 int main(void){

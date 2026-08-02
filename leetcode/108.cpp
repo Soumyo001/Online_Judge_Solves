@@ -27,4 +27,8 @@ TreeNode* sortedArrayToBST(vector<int>& nums) {
 int main(void) {
     int n;cin>>n;vector<int> v(n, 0);for(int i=0;i<n;++i) cin>>v[i];
     TreeNode* root = sortedArrayToBST(v);
+    vector<vector<int>> a;
+    a.push_back({1});
+    a.push_back({1, 1});
+    auto i = a.back();
 }
