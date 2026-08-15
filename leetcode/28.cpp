@@ -2,20 +2,13 @@
 using namespace std;
 
 int strStr(string haystack, string needle) {
-    int idx = -1;
+    int len = needle.length();
+    
     for(int i = 0; i < haystack.length(); ++i) {
-        if(needle[0] == haystack[i]) {
-            idx = i;
-            for(int j = 0; j < needle.length(); ++j) {
-                if(needle[j] != haystack[i+j]) {
-                    idx = -1;
-                    break;
-                }
-            }
-            if(idx != -1) return idx;
-        }
+        string res = haystack.substr(i, len);
+        if(res == needle) return i;
     }
-    return idx;
+    return -1;
 }
 
 int main(void) {
