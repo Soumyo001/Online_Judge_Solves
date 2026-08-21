@@ -2,16 +2,15 @@
 using namespace std;
 
 int lengthOfLongestSubstring(string s) {
-    unordered_set<char> window;
-    int mx = 0, left = 0;
-
+    unordered_map<char, int> m;
+    int left = 0;
+    int mx = 0;
     for(int right = 0; right < s.length(); ++right) {
-        while(window.count(s[right])) {
-            window.erase(s[left]);
+        ++m[s[right]];
+        while(m[s[right]] > 1) {
+            --m[s[left]];
             ++left;
         }
-
-        window.insert(s[right]);
         mx = max(mx, right - left + 1);
     }
     return mx;

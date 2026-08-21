@@ -2,15 +2,17 @@
 using namespace std;
 
 int maxArea(vector<int>& height) {
-    int n = height.size();
-    int left = 0, right = n - 1;
-    int max_cap = INT_MIN;
+    int left = 0;
+    int right = height.size() - 1;
+    int maxSize = 0;
     while(left < right) {
-        max_cap = max(max_cap, min(height[left], height[right]) * (right-left));
-        if(height[left] >= height[right]) --right;
-        else ++left;
+        int dist = right - left;
+        int h = min(height[left], height[right]);
+        maxSize = max(maxSize, h*dist);
+        if(height[left] <= height[right]) ++left;
+        else --right;
     }
-    return max_cap;
+    return maxSize;
 }
 
 int main(void) {

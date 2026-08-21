@@ -1,0 +1,1 @@
+{"name":"Local: unique_characters","url":"/mnt/partition1/Code Practise/self experiments/unique_characters.cpp","tests":[{"id":1787082526313,"input":"asparagas","output":"0 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/self experiments/unique_characters.cpp","group":"local","local":true}
