@@ -1,0 +1,1 @@
+{"name":"Local: team","url":"/mnt/partition1/Code Practise/code forces/team.cpp","tests":[{"id":1787508711494,"input":"3\n1 1 0\n1 1 1\n1 0 0","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/partition1/Code Practise/code forces/team.cpp","group":"local","local":true}
